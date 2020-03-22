@@ -25,22 +25,22 @@ public class Planet{
         imgFileName = p.imgFileName;
     }     
     
-    private double calcDistance(Planet p){
+    public double calcDistance(Planet p){
         return Math.sqrt((p.xxPos-xxPos)*(p.xxPos-xxPos)
             +(p.yyPos-yyPos)*(p.yyPos-yyPos));
     }
 
-    private  double calcForceExertedBy(Planet p){
+    public  double calcForceExertedBy(Planet p){
         return (G*p.mass*mass/
             (calcDistance(p)*calcDistance(p)));
     }
 
-    private double calcForceExertedByX(Planet p){
+    public double calcForceExertedByX(Planet p){
         return calcForceExertedBy(p)*(p.xxPos - xxPos)/
                 calcDistance(p);
     }
 
-    private double calcForceExertedByY(Planet p){
+    public double calcForceExertedByY(Planet p){
         return calcForceExertedBy(p)*(p.yyPos - yyPos)/
                 calcDistance(p);
     }
