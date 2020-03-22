@@ -5,7 +5,7 @@ public class Planet{
     public double yyVel;
     public double mass;
     public String imgFileName;
-    static final double G = 6.67*1.0E-11;
+    private static final double G = 6.67*1.0E-11;
 
     public Planet(double xP, double yP, double xV,
               double yV, double m, String img){
@@ -25,27 +25,27 @@ public class Planet{
         imgFileName = p.imgFileName;
     }     
     
-    double calcDistance(Planet p){
+    private double calcDistance(Planet p){
         return Math.sqrt((p.xxPos-xxPos)*(p.xxPos-xxPos)
             +(p.yyPos-yyPos)*(p.yyPos-yyPos));
     }
 
-    double calcForceExertedBy(Planet p){
+    private double calcForceExertedBy(Planet p){
         return (G*p.mass*mass/
             (calcDistance(p)*calcDistance(p)));
     }
 
-    double calcForceExertedByX(Planet p){
+    private double calcForceExertedByX(Planet p){
         return calcForceExertedBy(p)*(p.xxPos - xxPos)/
                 calcDistance(p);
     }
 
-    double calcForceExertedByY(Planet p){
+    private double calcForceExertedByY(Planet p){
         return calcForceExertedBy(p)*(p.yyPos - yyPos)/
                 calcDistance(p);
     }
 
-    double calcNetForceExertedByX(Planet[] allPlanets){
+    private double calcNetForceExertedByX(Planet[] allPlanets){
         int i;
         double res = 0.0;
         for(Planet p : allPlanets ){
@@ -55,7 +55,7 @@ public class Planet{
         return res;
     }
 
-    double calcNetForceExertedByY(Planet[] allPlanets){
+    private double calcNetForceExertedByY(Planet[] allPlanets){
         int i;
         double res = 0.0;
         for(Planet p : allPlanets){
@@ -65,14 +65,14 @@ public class Planet{
         return res;
     }
 
-    void update(double dt, double Fx, double Fy){
+    private  void update(double dt, double Fx, double Fy){
         xxVel += dt*Fx/mass;
         yyVel += dt*Fy/mass;
         xxPos += dt*xxVel;
         yyPos += dt*yyVel;
     }
 
-    void draw(){
+    private  void draw(){
         StdDraw.picture(xxPos, yyPos, "images/"+imgFileName);
     }
 }
