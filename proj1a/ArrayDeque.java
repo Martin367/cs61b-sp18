@@ -51,7 +51,7 @@ public class ArrayDeque<T> {
         T item;
         if (size > 0) {
             item = array[(nextLast - 1 + array.length) % array.length];
-            array[(nextLast - 1) % array.length] = null;
+            array[(nextLast - 1 + array.length) % array.length] = null;
             size -= 1;
             calR();
             nextLast -= 1;
