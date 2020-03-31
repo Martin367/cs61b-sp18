@@ -124,7 +124,7 @@ public class ArrayDeque<T> {
     /*public int getLast() {
         return array[(nextLast-1)%array.length];        
     }*/
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         ArrayDeque L = new ArrayDeque();
         L.addLast(1);
         L.addLast(2);
@@ -141,5 +141,5 @@ public class ArrayDeque<T> {
         L.removeFirst();
         L.removeFirst();
         L.removeLast();
-    }
+    }*/
 }
