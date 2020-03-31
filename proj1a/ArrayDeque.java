@@ -9,11 +9,11 @@ public class ArrayDeque<T> {
         size = 0;
         nextFirst = 0;
         nextLast = 1;
-        R = size / array.length;
+        R = 1.0 * size / array.length;
     }
 
-    private double calR() {
-        return R = size / array.length;
+    private void calR() {
+        R = 1.0 * size / array.length;
     }
     private void resize() {
         T[] a = (T[]) new Object[array.length * 2];
@@ -124,7 +124,7 @@ public class ArrayDeque<T> {
     /*public int getLast() {
         return array[(nextLast-1)%array.length];        
     }*/
-    /*public static void main(String[] args) {
+    public static void main(String[] args) {
         ArrayDeque L = new ArrayDeque();
         L.addLast(1);
         L.addLast(2);
@@ -132,9 +132,14 @@ public class ArrayDeque<T> {
         L.addLast(4);
         L.addLast(5);
         L.addFirst(6);
+        L.addFirst(7);
+        L.addLast(8);
+        L.addFirst(9);
         L.removeFirst();
         L.removeLast();
         L.removeLast();
         L.removeFirst();
-    }*/
+        L.removeFirst();
+        L.removeLast();
+    }
 }
