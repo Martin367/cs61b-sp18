@@ -79,21 +79,88 @@ public class IntList {
      * Returns a list consisting of the elements of A followed by the
      * *  elements of B.  May modify items of A. Don't use 'new'.
      */
-
+    /**iterative Destructive.
     public static IntList dcatenate(IntList A, IntList B) {
         //TODO:  fill in method
+        if (A != null) {
+            IntList L = A;
+            while (L.rest != null) {
+                L = L.rest;
+            }
+            L.rest = B;
+            return A;
+        } else if (B != null) {
+            return B;
+        }
         return null;
-    }
-
+    }*/
+    /*
+    *recursive Destructive.
+    */
+    public static IntList dcatenate(IntList A, IntList B) {
+        //TODO:  fill in method
+        if (A != null) {
+            if (A.rest == null) {
+                A.rest = B;
+                return A;
+            }
+            dcatenate(A.rest, B);
+            return A;
+        } else if (B != null) {
+            return B;
+        }
+        return null;
+    }    
     /**
      * Returns a list consisting of the elements of A followed by the
      * * elements of B.  May NOT modify items of A.  Use 'new'.
      */
+    /**iterative Non-destructive.
     public static IntList catenate(IntList A, IntList B) {
         //TODO:  fill in method
-        return null;
-    }
+        if (A != null) {
+            IntList res = new IntList(A.first, null);
+            IntList ptr = res;
+            A = A.rest;
+            while (A != null) {
+                ptr.rest = new IntList(A.first, null);
+                A = A.rest;
+                ptr = ptr.rest;
+            }
+            while (B != null) {
+                ptr.rest = new IntList(B.first, null);
+                B = B.rest;
+                ptr = ptr.rest;
+            }
+            //ptr.rest = B;
+            return res;
+        } else if (B != null) {
+            return B;
+        }
 
+        return null;
+    }*/
+    //recursive Non-destructive.
+    private static IntList copy(IntList L) {
+        if (L == null) {
+            return null;
+        }
+        return new IntList(L.first, copy(L.rest));
+    }
+    public static IntList catenate(IntList A, IntList B) {
+        IntList res = new IntList(); 
+        res = copy(A);
+        if (res != null) {
+            IntList ptr = res;
+            while (ptr.rest != null) {
+                ptr = ptr.rest;
+            }
+            ptr.rest = copy(B);    
+        } else {
+            res = copy(B);
+        }
+        return res;
+    }
 
 
 
