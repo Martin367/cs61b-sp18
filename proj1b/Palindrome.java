@@ -8,7 +8,7 @@ public class Palindrome {
      * Given a String, returns a Deque.
      */
     public Deque<Character> wordToDeque(String word) {
-        LinkedListDeque<Character> d = new LinkedListDeque<>();
+        Deque<Character> d = new LinkedListDeque<>();
         for (int i = 0; i < word.length(); i += 1) {
             d.addLast(word.charAt(i));
         }
@@ -58,7 +58,7 @@ public class Palindrome {
         }    
     }*/
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        cc = new OffByN(5);
+        cc = new OffByN(1);
         int i;
         boolean res = false;
         for (i = 0; i < word.length() / 2; i += 1) {
