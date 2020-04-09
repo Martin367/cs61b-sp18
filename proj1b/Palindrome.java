@@ -58,7 +58,7 @@ public class Palindrome {
         }    
     }*/
     public boolean isPalindrome(String word, CharacterComparator cc) {
-        cc = new OffByN(1);
+        //cc = new OffByN(5);
         int i;
         boolean res = false;
         for (i = 0; i < word.length() / 2; i += 1) {
